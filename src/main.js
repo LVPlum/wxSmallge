@@ -6,10 +6,10 @@ import 'css/aui.css'
 import 'css/skin.css'
 import 'css/tea.css'
 
+Vue.use(require('vue-wechat-title'))
+
 new Vue({
   el: '#app',
   router,
   render: h => h(App)
 })
-
-Vue.use(require('vue-wechat-title'))

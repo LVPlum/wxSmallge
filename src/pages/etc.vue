@@ -1,6 +1,6 @@
 <template>
     <div id="etc">
-        <a href="http://localhost:8082/#/vip">这里是ETC，测试页面</a>
+        <a href="http://localhost:8080/#/vip">这里是ETC，测试页面</a>
         <header class="banner"><img src="../assets/image/etc/banner@2x.png" alt="banner"></header>
         <div class="aui-bar-btn bar">
             <div class="warp aui-margin-b-10">

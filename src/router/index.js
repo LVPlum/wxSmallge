@@ -7,10 +7,10 @@ Vue.use(Router)
 export default new Router({
     routes: [
         {
-            path: '/',
+            path: '/etc',
             name: 'etc',
             meta: {
-                    title: '购买ETC'
+                title: '购买ETC'
             },
             component: ETC
         },
@@ -18,7 +18,7 @@ export default new Router({
             path: '/vip',
             name: 'vip',
             meta: {
-                    title: '购买VIP'
+                title: '购买VIP'
             },
             component: VIP
         }
