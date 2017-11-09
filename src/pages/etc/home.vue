@@ -1,10 +1,19 @@
 <template>
     <div id="etc">
-        <a href="http://localhost:8081/#/vip">这里是ETC，测试页面</a>
-        <header class="banner"><img src="../assets/image/etc/banner@2x.png" alt="banner"></header>
+        <!--<a href="http://localhost:8082/#/vip">这里是ETC，测试页面</a>-->
+        <header class="banner"><img src="../../assets/image/etc/banner@2x.png" alt="banner"></header>
         <div class="aui-bar-btn bar">
             <div class="warp aui-margin-b-10">
-                <ul class="aui-list aui-media-list" id="list">
+                <input-plate :province="province" v-model="number" @updata="updataMsg">
+                    <div slot="car_type" class="aui-font-size-16 tea-text-title aui-margin-t-10 aui-padded-b-10 aui-border-b">
+                        <span @click="selectCarType('sedan')" style="width: 40%">小车<label class="aui-radio btn aui-checked"></label></span>
+                        <span @click="selectCarType('truck')">货车<span class="tea-text-gray">(即将开通)</span><label class="aui-radio btn aui-checked no"></label></span>
+                    </div>
+                    <div v-if="is_vip" slot="vip" class="aui-margin-r-5">
+                        <div class="vip black">VIP</div>
+                    </div>
+                </input-plate>
+                <!--<ul class="aui-list aui-media-list" id="list">
                     <li class="aui-list-item aui-padded-0 border-b">
                         <div class="aui-media-list-item-inner">
                             <div class="aui-list-item-inner aui-padded-l-15 aui-padded-r-0">
@@ -26,9 +35,10 @@
                             </div>
                         </div>
                     </li>
-                </ul>
+                </ul>-->
             </div>
         </div>
+        <!--<input-plate :province=" '桂E' " :value=" '123' " ></input-plate>-->
         <div class="aui-content-padded aui-font-size-14 tea-text-default info" style="margin-bottom: 3rem">
             <p>办理须知</p>
             <p>1.八桂行卡高速收费优惠5%</p>
@@ -36,25 +46,56 @@
             <p>3.办理ETC，收费350元，含电子签证、八桂行卡</p>
             <p>4.仅限小轿车 (货车期待开通...)</p>
         </div>
-        <footer class="aui-bar aui-bar-tab">
+        <footer class="aui-bar aui-bar-tab" @click="nextStep">
             <div class="aui-bar-tab-item aui-text-white tea-bg-blue">
-                <div class="search-input tea-font-weight-bold aui-font-size-16" @click="next">下一步</div>
+                <div class="search-input tea-font-weight-bold aui-font-size-16">下一步</div>
             </div>
         </footer>
+        <!--<router-link :to=" '/etctwo' ">
+            <footer class="aui-bar aui-bar-tab">
+                <div class="aui-bar-tab-item aui-text-white tea-bg-blue">
+                    <div class="search-input tea-font-weight-bold aui-font-size-16">下一步</div>
+                </div>
+            </footer>
+        </router-link>-->
     </div>
 </template>
 
 <script>
+    import plate from '../../components/input-plate.vue'
+    import { Picker } from 'vux'
+
     export default {
         name: 'etc',
-        methods:{
-            next: function(){
-                alert('下一步');
+        data: function(){
+            return {
+                carType: '',
+                is_vip: 0,
+                province: '桂E',
+                number: 'eqw'
             }
+        },
+        methods:{
+            selectCarType: function(type){
+                alert(type);
+            },
+            nextStep:function () {
+                alert(this.number)
+            },
+            updataMsg: function (type,val) {
+                switch (type){
+                    case 'picker':
+                        console.log(type);
+                        break;
+                }
+            }
+        },
+        components:{
+            'input-plate': h => h(plate)
         },
         mounted (){
             console.log('13245646');
-        }
+        },
     }
 </script>
 
@@ -78,16 +119,6 @@
     }
     .border{
         background-position: 0 bottom !important;
-    }
-    /*修改value的placeholder的颜色*/
-    input::-webkit-input-placeholder, textarea::-webkit-input-placeholder{
-        color:   #CCCCCC;
-    }
-    input:-moz-placeholder, textarea:-moz-placeholder {
-        color:    #CCCCCC;
-    }
-    input:-ms-input-placeholder, textarea:-ms-input-placeholder {
-        color:    #CCCCCC;
     }
     .aui-radio:checked, .aui-radio.aui-checked.no{
         background-color: #ccc;
@@ -136,7 +167,6 @@
     }
     .info{
         margin-bottom: 3rem;
-        /*position: absolute;*/
         bottom: 0;
     }
 </style>

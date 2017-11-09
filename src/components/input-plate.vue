@@ -9,17 +9,15 @@
                     <slot name="car_type"></slot>
                     <div class="aui-info aui-padded-0 aui-margin-t-5">
                         <slot name="vip"></slot>
-                        <div class="aui-list-item-label" style="width: 4rem;line-height: normal"  @click="openWinProvince">
+                        <div class="aui-list-item-label" style="width: 4rem;line-height: normal" @click="openPicker">
                             <span class="tea-text-title aui-font-size-16 tea-text-arrow-down">{{ province }}</span>
                         </div>
                         <div class="aui-list-item-input aui-font-size-16">
                             <input type="text" placeholder="请输入车牌后5位数" maxlength="8"
-                                   v-model="value"
+                                   :value="value"
                                    @input="updateValue($event.target.value)">
-                                   <!--:value="value"
-                                   @blur="updateValue($event.target.value)">-->
                         </div>
-                        <div class="tea-text-round" style="border: none;"  @click="openWinPlate"><img src="../assets/select.png"></div>
+                        <!--<div class="tea-text-round" style="border: none;"  @click="openWinPlate"><img src="../assets/select.png"></div>-->
                         <!--<div class="tea-text-round tea-big"  @click="openWinPlate">选</div>-->
                     </div>
                 </div>
@@ -41,15 +39,17 @@
 
         },
         methods: {
-            
+            updateValue: function (value) {
+                this.$emit('input',value);
+            },
+            openPicker: function () {
+                this.$emit('updata','picker')
+            }
         },
         watch: {
 
-        },
-        created: function(){
-            
-    };
-
+        }
+    }
 </script>
 <style>
 

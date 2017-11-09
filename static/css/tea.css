@@ -327,7 +327,7 @@
     color: #3399ff;
     border: 1px solid #3399ff;
     border-radius: 2.5rem;
-    background-color: #fff; 
+    background-color: #fff;
 }
 .tea-btn-submit:active {
     background-color: #3399ff;
@@ -492,7 +492,7 @@
     border: 1px solid #3399ff;
     z-index: 2;
     -webkit-border-radius: 50%;
-            border-radius: 50%;    
+            border-radius: 50%;
 }
 
 .tea-clear-btn {
@@ -524,14 +524,14 @@ input:valid + .tea-clear-btn { display: -webkit-box; }
  *要求父元素高度等于屏幕高度才能居中
  */
  .tea-nothing {
-    width: 100%; 
+    width: 100%;
     height: auto;
     position: absolute;
     top: 50%;
     left: 50%;
-     -webkit-transform: translate(-50%,-50%);  
-        -ms-transform: translate(-50%,-50%);  
-            transform: translate(-50%,-50%); 
+     -webkit-transform: translate(-50%,-50%);
+        -ms-transform: translate(-50%,-50%);
+            transform: translate(-50%,-50%);
     margin: auto;
     text-align: center;
 }
@@ -604,4 +604,15 @@ input:valid + .tea-clear-btn { display: -webkit-box; }
     background-repeat: no-repeat;
     background-size: 40% 40%;
     /*background-image: url(../image/stop@2x.png);*/
+}
+
+/*修改value的placeholder的颜色*/
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder{
+  color:   #CCCCCC;
+}
+input:-moz-placeholder, textarea:-moz-placeholder {
+  color:    #CCCCCC;
+}
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+  color:    #CCCCCC;
 }

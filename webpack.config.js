@@ -10,7 +10,7 @@ module.exports = {
   },
   resolve: {
     //配置别名，在项目中可缩减引用路径
-    extensions: ['.js', '.vue'],
+    extensions: ['.js', '.vue', '.json'],
     alias: {
         css: path.join(__dirname, '/static/css'),
         image: path.join(__dirname, '/src/assets/image/'),
