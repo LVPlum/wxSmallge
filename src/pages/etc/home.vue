@@ -63,7 +63,7 @@
 
 <script>
     import plate from '../../components/input-plate.vue'
-    import { Picker } from 'vux'
+    import { Toast } from 'vux'
 
     export default {
         name: 'etc',
@@ -91,9 +91,18 @@
             }
         },
         components:{
-            'input-plate': h => h(plate)
+            Toast,
+            'input-plate': h => h(plate),
         },
         mounted (){
+            const _this = this
+            _this.$vux.toast.show({
+                text: '获取数据失败，请检查网络！',
+                time: '2000',
+                type: 'text',
+                width: '10rem',
+                position: 'middle'
+            })
             console.log('13245646');
         },
     }

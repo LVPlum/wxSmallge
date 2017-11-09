@@ -78,3 +78,10 @@ if (process.env.NODE_ENV === 'production') {
     })
   ])
 }
+
+const vuxLoader = require('vux-loader')
+
+const webpackConfig = module.exports;
+module.exports = vuxLoader.merge(webpackConfig, {
+  plugins: ['vux-ui']
+})
