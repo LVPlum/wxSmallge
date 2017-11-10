@@ -30,7 +30,7 @@
 </template>
 
 <script>
-    import { PopupPicker , Toast } from 'vux'
+    import { PopupPicker } from 'vux'
 
     export default {
         name: 'input-plate',
@@ -60,8 +60,7 @@
 
         },
         components: {
-            PopupPicker,
-            Toast
+            PopupPicker
         },
     }
 </script>
