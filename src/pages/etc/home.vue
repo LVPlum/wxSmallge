@@ -40,7 +40,7 @@
         </div>
         <!--<input-plate :province=" '桂E' " :value=" '123' " ></input-plate>-->
         <div class="aui-content-padded aui-font-size-14 tea-text-default info" style="margin-bottom: 3rem">
-            <p>办理须知</p>
+            <p class="test">办理须知</p>
             <p>1.八桂行卡高速收费优惠5%</p>
             <p>2.免费上门安装服务，仅限北海市区和合浦县城</p>
             <p>3.办理ETC，收费350元，含电子签证、八桂行卡</p>
@@ -63,52 +63,81 @@
 
 <script>
     import plate from '../../components/input-plate.vue'
-    import { Toast } from 'vux'
+    import { PopupPicker, Toast } from 'vux'
 
     export default {
         name: 'etc',
-        data: function(){
+        data (){
             return {
                 carType: '',
                 is_vip: 0,
                 province: '桂E',
-                number: 'eqw'
+                number: ''
             }
         },
         methods:{
-            selectCarType: function(type){
+            selectCarType (type){
                 alert(type);
             },
-            nextStep:function () {
-                alert(this.number)
+            nextStep () {
+                console.log(this.province+this.number);
+                if(this.number){
+                    this.$router.push('/etctwo')
+                }else {
+                    this.$vux.toast.show({
+                        text: '车牌号码错误',
+                        type: 'text',
+                        position: 'middle'
+                    })
+                }
             },
-            updataMsg: function (type,val) {
+            updataMsg (type,val){
                 switch (type){
                     case 'picker':
-                        console.log(type);
+                        /*this.$vux.toast.show({
+                            text: '获取数据失败，请检查网络！',
+                            time: '2000',
+                            type: 'text',
+                            width: '10rem',
+                            position: 'middle'
+                        })*/
+                        this.province = val;
                         break;
                 }
-            }
+            },
         },
         components:{
             Toast,
             'input-plate': h => h(plate),
         },
         mounted (){
-            const _this = this
+            /*const _this = this
             _this.$vux.toast.show({
                 text: '获取数据失败，请检查网络！',
                 time: '2000',
                 type: 'text',
                 width: '10rem',
                 position: 'middle'
-            })
-            console.log('13245646');
+            })*/
+//            console.log('13245646');
         },
     }
 </script>
 
-<style>
+<style lang="less">
+    //vux 样式修改,全组件覆盖
+    .vux-toast {
+        .weui-toast {
+            p {
+                color: white;
+                font-size: 0.8rem;
+            }
+        }
+    }
+</style>
+
+<style scoped lang="less">
+    //原有样式，scoped此页面有效
     .banner img{
         width: 100%;
         height: auto;

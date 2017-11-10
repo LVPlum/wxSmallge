@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import ETC from '../pages/etc/home.vue'
 import ETCTwo from '../pages/etc/etctwo.vue'
+import Picker from '../pages/etc/picker.vue'
 import VIP from '../pages/vip/vip.vue'
 Vue.use(Router)
 
@@ -29,7 +30,15 @@ export default new Router({
             meta: {
                 title: '购买ETC'
             },
-            component: ETCTwo
-        }
+            component: ETCTwo,
+        },
+        // {
+        //     path: '/picker',
+        //     name: 'picker',
+        //     meta: {
+        //         title: '购买ETC'
+        //     },
+        //     component: Picker
+        // }
     ]
 })

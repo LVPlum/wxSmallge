@@ -1,7 +1,7 @@
 <template>
-    <div id="app" class="tea-bg-white" v-cloak>
+    <div id="etctwo" class="tea-bg-white" v-cloak>
         <div class="aui-content-padded aui-font-size-14 tea-text-default info" style="margin-bottom: 2.8rem">
-            <p>办理须知</p>
+            <p @click="test">办理须知</p>
             <p>1.八桂行卡高速收费优惠5%</p>
             <p>2.免费上门安装服务，仅限北海市区和合浦县城</p>
             <p>3.办理ETC，收费元，含电子签证、八桂行卡</p>
@@ -12,15 +12,27 @@
 </template>
 
 <script>
+    import { PopupPicker, Toast } from 'vux'
+
     export default {
-        name: 'etc',
+        name: 'etctwo',
         methods:{
-            next: function(){
+            next (){
                 alert('下一步');
+            },
+            test(){
+                this.$vux.toast.show({
+                    text: '车牌号码错误',
+                    type: 'text',
+                    position: 'middle'
+                })
             }
         },
         mounted (){
             console.log('13245646');
+        },
+        components:{
+            Toast
         }
     }
 </script>
