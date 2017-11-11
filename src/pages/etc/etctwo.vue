@@ -1,43 +1,145 @@
 <template>
-    <div id="etctwo" class="tea-bg-white" v-cloak>
-        <div class="aui-content-padded aui-font-size-14 tea-text-default info" style="margin-bottom: 2.8rem">
-            <p @click="test">办理须知</p>
+    <div id="etctwo" class="tea-bg-white aui-padded-t-10" v-cloak>
+        <div class="aui-bar-btn bar">
+            <div class="warp">
+                <!--<ul class="aui-list aui-media-list">
+                    <li class="aui-list-item aui-padded-0 border-b">
+                        <div class="aui-media-list-item-inner">
+                            <div class="aui-list-item-inner aui-padded-l-15 aui-padded-r-0">
+                                <div class="aui-info aui-padded-0 aui-margin-t-5">
+                                    <div v-if="is_vip" class="aui-margin-r-5">
+                                        <div class="vip black">VIP</div>
+                                    </div>
+                                    <div class="aui-list-item-label aui-font-size-16 tea-font-weight-bold" style="width: 100%;line-height: normal">
+                                        {{ plate.substring(0,2) +" "+ plate.substring(2) }} <span class="aui-font-size-14 tea-text-gray aui-margin-l-15" style="font-weight: normal">{{ carType == 'sedan' ? '小车' : '货车' }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>-->
+                <input-option :checked="checked" :config="optionConfig" @select="checkedOn"></input-option>
+                <div v-show="checked == '1' " class="aui-list">
+                    <div class="aui-list-item border-t" style="margin-left: 0;padding-left: 0.75rem">
+                        <div class="aui-info aui-padded-0">
+                            <div class="aui-info-item aui-font-size-16 tea-text-title">
+                                <span>店铺地址</span>
+                                <span class="aui-margin-l-10 aui-ellipsis">{{store}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-list-item border-t" style="margin-left: 0;padding-left: 0.75rem">
+                        <div class="aui-info aui-padded-0">
+                            <div class="aui-info-item aui-font-size-16 tea-text-title">
+                                <span>手机号码</span>
+                                <span class="aui-margin-l-10">
+                                    <input type="tel" placeholder="请输入您的手机号码" maxlength="11"
+                                           v-model = "tel">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div v-show="checked == '2' " class="aui-list">
+                    <div class="aui-list-item border-t" style="margin-left: 0;padding-left: 0.75rem">
+                        <div class="aui-info aui-padded-0">
+                            <div class="aui-info-item aui-font-size-16 tea-text-title">
+                                <span>姓名</span>
+                                <span class="aui-margin-l-10">
+                                    <input type="text" placeholder="请输入您的姓名" maxlength="11"
+                                           v-model = "address_name">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-list-item border-t" style="margin-left: 0;padding-left: 0.75rem">
+                        <div class="aui-info aui-padded-0">
+                            <div class="aui-info-item aui-font-size-16 tea-text-title">
+                                <span>手机号码</span>
+                                <span class="aui-margin-l-10">
+                            <input type="tel" placeholder="请输入您的手机号码" maxlength="11"
+                                   v-model = "tel">
+                        </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-list-item border-t" style="margin-left: 0;padding-left: 0.75rem" >
+                        <div class="aui-info aui-padded-0">
+                            <div class="aui-info-item aui-font-size-16 tea-text-title">
+                                <span>详细地址</span>
+                                <span class="aui-margin-l-10">
+                            <input type="text" placeholder="请输入您的地址" maxlength="130"
+                                   v-model = "address_info">
+                        </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p v-show="checked == '2' " class="aui-font-size-14 tip">免费上门安装服务，仅限北海市区和合浦县城</p>
+            <!--<coupon :type='coupon_type' @updata="updataMsg" ></coupon>-->
+        </div>
+        <div class="aui-content-padded aui-font-size-14 tea-text-default">
+            <p>办理须知</p>
             <p>1.八桂行卡高速收费优惠5%</p>
             <p>2.免费上门安装服务，仅限北海市区和合浦县城</p>
-            <p>3.办理ETC，收费元，含电子签证、八桂行卡</p>
+            <p>3.办理ETC，收费350元，含电子签证、八桂行卡</p>
             <p>4.仅限小轿车 (货车期待开通...)</p>
         </div>
-        
     </div>
 </template>
 
 <script>
-    import { PopupPicker, Toast } from 'vux'
+    import option from '../../components/input-option.vue'
+    import { Toast } from 'vux'
 
     export default {
         name: 'etctwo',
+        data (){
+            return {
+                checked: '',
+                optionConfig: {
+                    title: '安装方式',
+                    way: [
+                        {title:'到店安装',id:'1'},
+                        {title:'上门安装',id:'2'}
+                    ],
+                },
+                tel: '',
+                address_info: '',
+                address_name: '',
+                store: '合浦还珠南路小马哥审车处'
+            }
+        },
         methods:{
-            next (){
-                alert('下一步');
-            },
             test(){
                 this.$vux.toast.show({
                     text: '车牌号码错误',
                     type: 'text',
                     position: 'middle'
                 })
+            },
+            checkedOn (val){
+                this.checked = val;
             }
+        },
+        components:{
+            Toast,
+            'input-option': h => h(option),
         },
         mounted (){
             console.log('13245646');
-        },
-        components:{
-            Toast
         }
     }
 </script>
 
-<style>
+<style scoped lang="less">
+    html, body {
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: #FFFFFF;
+    }
     .banner img{
         width: 100%;
         height: auto;
@@ -45,7 +147,6 @@
     .bar{
         width: 92%;
         position: relative;
-        margin-top: -4.5rem;
     }
     .warp{
         border-radius: 0.3rem;
@@ -57,16 +158,6 @@
     }
     .border{
         background-position: 0 bottom !important;
-    }
-    /*修改value的placeholder的颜色*/
-    input::-webkit-input-placeholder, textarea::-webkit-input-placeholder{
-        color:   #CCCCCC;
-    }
-    input:-moz-placeholder, textarea:-moz-placeholder {
-        color:    #CCCCCC;
-    }
-    input:-ms-input-placeholder, textarea:-ms-input-placeholder {
-        color:    #CCCCCC;
     }
     .aui-radio:checked, .aui-radio.aui-checked.no{
         background-color: #ccc;
@@ -107,15 +198,9 @@
         background-color: #333333;
         color: #f2d394;
     }
-    .btn{
-        width: 1rem !important;
-        height: 1rem !important;
-        vertical-align: sub !important;
-        margin-left: 0.5rem;
-    }
-    .info{
-        margin-bottom: 3rem;
-        /*position: absolute;*/
-        bottom: 0;
+    .tip{
+        color: #ff0000;
+        padding: 0.5rem 0.5rem 0 0;
+        text-align: right;
     }
 </style>

@@ -82,7 +82,8 @@
             nextStep () {
                 console.log(this.province+this.number);
                 if(this.number){
-                    this.$router.push('/etctwo')
+//                    this.$router.push({ path: '/etctwo' }, )
+                    this.$router.push({ name: 'etctwo' , params: { province: this.province }}, )
                 }else {
                     this.$vux.toast.show({
                         text: '车牌号码错误',
