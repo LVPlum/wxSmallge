@@ -1,6 +1,7 @@
 <template>
     <div id="etctwo" class="tea-bg-white aui-padded-t-10" v-cloak>
         <div class="aui-bar-btn bar">
+            {{this.$route.query.province}}
             <div class="warp">
                 <!--<ul class="aui-list aui-media-list">
                     <li class="aui-list-item aui-padded-0 border-b">
@@ -128,7 +129,8 @@
             'input-option': h => h(option),
         },
         mounted (){
-            console.log('13245646');
+            // console.log('13245646');
+            console.log(this.$route.query.province,this.$route.query.number);
         }
     }
 </script>
