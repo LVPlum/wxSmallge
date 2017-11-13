@@ -83,7 +83,7 @@
                 console.log(this.province+this.number);
                 if(this.number){
 //                    this.$router.push({ path: '/etctwo' }, )
-                    this.$router.push({ name: 'etctwo' , query: { province: this.province, number: this.number }}, )
+                    this.$router.push({ name: 'etctwo' , query: { province: decodeURI(this.province), number: this.number }}, )
                 }else {
                     this.$vux.toast.show({
                         text: '车牌号码错误',
