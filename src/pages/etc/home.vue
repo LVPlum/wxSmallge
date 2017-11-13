@@ -9,9 +9,9 @@
                         <span @click="selectCarType('sedan')" style="width: 40%">小车<label class="aui-radio btn aui-checked"></label></span>
                         <span @click="selectCarType('truck')">货车<span class="tea-text-gray">(即将开通)</span><label class="aui-radio btn aui-checked no"></label></span>
                     </div>
-                    <div v-if="is_vip" slot="vip" class="aui-margin-r-5">
+                    <!--<div v-if="is_vip" slot="vip" class="aui-margin-r-5">
                         <div class="vip black">VIP</div>
-                    </div>
+                    </div>-->
                 </input-plate>
                 <!--<ul class="aui-list aui-media-list" id="list">
                     <li class="aui-list-item aui-padded-0 border-b">
@@ -47,7 +47,7 @@
             <p>4.仅限小轿车 (货车期待开通...)</p>
         </div>
         <footer class="aui-bar aui-bar-tab" @click="nextStep">
-            <div class="aui-bar-tab-item aui-text-white tea-bg-blue">
+            <div :class="{ 'tea-bg-blue' : number }" class="aui-bar-tab-item aui-text-white btn-bg-light-blue">
                 <div class="search-input tea-font-weight-bold aui-font-size-16">下一步</div>
             </div>
         </footer>
@@ -69,8 +69,8 @@
         name: 'etc',
         data (){
             return {
-                carType: '',
-                is_vip: 0,
+                carType: 'sedan',
+                is_vip: 1,
                 province: '桂E',
                 number: ''
             }
@@ -78,12 +78,12 @@
         methods:{
             selectCarType (type){
                 alert(type);
+                this.carType = type;
             },
             nextStep () {
                 console.log(this.province+this.number);
                 if(this.number){
-//                    this.$router.push({ path: '/etctwo' }, )
-                    this.$router.push({ name: 'etctwo' , query: { province: decodeURI(this.province), number: this.number }}, )
+                    this.$router.push({ name: 'etctwo' , query: { province: this.province, number: this.number, carType: this.carType, is_vip: this.is_vip }}, )
                 }else {
                     this.$vux.toast.show({
                         text: '车牌号码错误',
@@ -139,6 +139,9 @@
 
 <style scoped lang="less">
     //原有样式，scoped此页面有效
+    .btn-bg-light-blue{
+        background-color: #80ccff;
+    }
     .banner img{
         width: 100%;
         height: auto;

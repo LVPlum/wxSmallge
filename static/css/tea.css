@@ -12,10 +12,10 @@
 }
 
 /******************************diy 图标字体库**********************************/
-/*@font-face {
+@font-face {
 	font-family: "tea_iconfont";
-	src: url('iconfont.ttf') format('truetype');
-}*/
+	src: url('../iconfont/iconfont.ttf') format('truetype');
+}
 .aui-iconfont[class*=tea-icon-]{
 	font-family:"tea_iconfont" !important;
 }
