@@ -1,11 +1,14 @@
 var path = require('path')
 var webpack = require('webpack')
 
+
+let isProduction = process.env.NODE_ENV === 'production' ? true : false;
+
 module.exports = {
     entry: './src/main.js',
     output: {
         path: path.resolve(__dirname, './dist'),
-        publicPath: '/',  //在服务器上运行将公用目录修改为 '/' ,静态资源都放到static中进行
+        publicPath: isProduction ? '/' : '/dist/',  //在服务器上运行将公用目录修改为'/',静态资源放到static中
         filename: 'build.js'
     },
     resolve: {

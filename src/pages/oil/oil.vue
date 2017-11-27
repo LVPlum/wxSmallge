@@ -1,6 +1,7 @@
 <template>
     <div id="oil">
-        油卡！！！！！！！！！！！！！！！！！！！
+        <header class="banner"><img src="static/image/banner@2x.png" alt="banner"></header>
+        <div>测试油卡功能</div>
     </div>
 </template>
 
