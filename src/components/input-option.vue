@@ -1,6 +1,6 @@
 <template id="input-plate">
     <ul class="aui-list aui-media-list">
-        <li class="aui-list-item aui-padded-0">
+        <li class="aui-list-item aui-padded-0 border-none">
             <div class="aui-media-list-item-inner">
                 <div class="aui-list-item-inner aui-padded-l-15">
                     <div class="aui-list-item-text aui-margin-b-10">
@@ -49,5 +49,8 @@
         height: 1rem !important;
         vertical-align: sub !important;
         margin-left: 0.5rem;
+    }
+    .border-none{
+        background-image: none !important;
     }
 </style>

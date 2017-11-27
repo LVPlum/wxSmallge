@@ -171,7 +171,8 @@
                 this.checked = val;
             },
             post (){
-                console.log(this.result)
+                console.log(this.result);
+                this.$router.push({ name: 'etcthree' } )
             },
             toggleFrm (){
                 if(this.frm){

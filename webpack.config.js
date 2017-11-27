@@ -5,7 +5,7 @@ module.exports = {
     entry: './src/main.js',
     output: {
         path: path.resolve(__dirname, './dist'),
-        publicPath: '/dist/',
+        publicPath: '/',  //在服务器上运行将公用目录修改为 '/' ,静态资源都放到static中进行
         filename: 'build.js'
     },
     resolve: {
