@@ -1,10 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import ETC from '../pages/etc/home.vue'
+import ETC from '../pages/etc/etc.vue'
 import ETCTwo from '../pages/etc/etctwo.vue'
 import ETCThree from '../pages/etc/etcthree.vue'
 import Picker from '../pages/etc/picker.vue'
 import VIP from '../pages/vip/vip.vue'
+import Oil from '../pages/oil/oil.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -18,8 +19,8 @@ export default new Router({
             component: VIP
         },
         {
-            path: '/home',
-            name: 'home',
+            path: '/etc',
+            name: 'etc',
             meta: {
                 title: '购买ETC'
             },
@@ -41,7 +42,14 @@ export default new Router({
             },
             component: ETCThree,
         },
-
+        {
+            path: '/oil',
+            name: 'oil',
+            meta: {
+                title: '购买油卡'
+            },
+            component: Oil,
+        },
         // {
         //     path: '/picker',
         //     name: 'picker',

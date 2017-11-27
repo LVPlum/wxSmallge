@@ -1,7 +1,7 @@
 <template>
     <div id="etc">
         <!--<a href="http://localhost:8082/#/vip">这里是ETC，测试页面</a>-->
-        <header class="banner"><img src="../../assets/image/etc/banner@2x.png" alt="banner"></header>
+        <header class="banner"><img src="static/image/banner@2x.png" alt="banner"></header>
         <div class="aui-bar-btn bar">
             <div class="warp aui-margin-b-10">
                 <input-plate :province="province" v-model="number" @updata="updataMsg">
